@@ -1,0 +1,800 @@
+/* =========================================
+   1. RESET I STYLE PODSTAWOWE
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  color: #7b2cbf;
+}
+
+/* =========================================
+   2. STICKY HEADER (NAWIGACJA)
+   ========================================= */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 248, 255, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  box-shadow: 0 6px 18px rgba(123, 44, 191, 0.12);
+}
+
+.sticky-header nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  /* ZMNIEJSZONY padding, żeby nigdy nie wypychał na mobile */
+  padding: 12px 12px;
+}
+
+.sticky-header ul {
+  display: flex;
+  flex-wrap: wrap; /* bardzo ważne */
+  gap: 16px;        /* zmniejszony z 30px */
+  list-style: none;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+.sticky-header a {
+  text-decoration: none;
+  color: #7b2cbf;
+  font-weight: 600;
+  padding: 6px 12px; /* mniejszy padding */
+  border-radius: 10px;
+  transition: 0.25s ease;
+  font-size: 1rem; /* lekko zmniejszone */
+  white-space: nowrap; /* nie łamie słów */
+}
+
+.sticky-header a:hover {
+  background: #ff66c4;
+  color: #fff;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 102, 196, 0.3);
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+.hero {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: linear-gradient(180deg, #ff7eb6 0%, #7b61ff 100%);
+  padding: 110px 20px 40px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Canvas */
+canvas#snow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero .title,
+.hero .subtitle,
+.hero .btn {
+  z-index: 2;
+  position: relative;
+}
+
+.title {
+  font-size: 3.2rem;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  max-width: 900px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 36px;
+  padding: 16px 36px;
+  font-size: 1.2rem;
+  border-radius: 36px;
+  background: #ff66c4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 6px 20px rgba(255, 102, 196, 0.4);
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  background: #ffd166;
+  box-shadow: 0 8px 25px rgba(255, 209, 102, 0.5);
+}
+
+/* =========================================
+   4. SEKCJE TREŚCI
+   ========================================= */
+.section {
+  padding: 100px 24px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.section h2 {
+  margin-bottom: 24px;
+  font-size: 2.4rem;
+  line-height: 1.4;
+  color: #7b2cbf;
+}
+
+.section p {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 16px;
+}
+
+.signature {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+/* =========================================
+   5. GALERIA (SLIDESHOW)
+   ========================================= */
+#gallery {
+  background: linear-gradient(65deg, #fff 5%, #ff7eb6 100%);
+  width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+}
+
+#gallery h2,
+#gallery p {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.slideshow-container {
+  position: relative;
+  margin: 50px auto;
+  max-width: 800px;
+  max-height: 1800px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  padding-bottom: 10px;
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.mySlides img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.numbertext {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.9);
+  color: #7b2cbf;
+  padding: 8px 14px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.text {
+  width: 100%;
+  padding: 15px 10px;
+  font-weight: 600;
+  background: #fff;
+  color: #7b2cbf;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Strzałki — poprawione marginesy */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  color: #fff;
+  background: rgba(123, 44, 191, 0.7);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  z-index: 3;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+.gift-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Każdy rząd – zawsze dwa elementy */
+.gift-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 700px; /* żeby nie rozjeżdżało się na dużych ekranach */
+}
+
+.circle-img,
+.rect-img {
+  width: calc(50% - 20px); /* zawsze po dwa obok siebie */
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #ff66c4;
+  transition: transform 0.3s;
+}
+
+/* Kółka mają kształt 1:1 */
+.circle-img {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+/* Prostokąty */
+.rect-img {
+  aspect-ratio: 4 / 3;
+}
+
+/* Animacje jak wcześniej */
+.circle-img:hover,
+.rect-img:hover {
+  transform: scale(1.05);
+}
+
+
+/*
+=============================
+PUDELKO
+============================
+*/
+#present{
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+}
+
+.present {
+  width: 410px;
+  margin: 0 auto;
+}
+.box, .lid {
+  background:
+    -webkit-radial-gradient(white 15%, transparent 15.1%),
+    -webkit-radial-gradient(white 15%, transparent 15.1%),
+  rgb(255, 102, 196);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  position: relative;
+  margin: 0 auto;
+}
+.box {
+  width: 400px;
+  height: 250px;
+}
+.lid {
+  width: 400px;
+  height: 70px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 0 2px;
+  background-color: rgb(255, 122, 173);
+  /* transitions */
+  top: 0;
+  left: 0;
+  transition: 
+    top ease-out 0.5s,
+    left ease-out 0.5s,
+    transform ease-out 0.5s;
+}
+.box span, .lid span {
+  position: absolute;
+  display: block;
+  background: rgba(255, 213, 79, 0.85);
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+}
+.box span:first-child {
+  width: 100%;
+  height: 60px;
+  top: 80px;
+}
+.box span:last-child, .lid span {
+  width: 60px;
+  height: 100%;
+  left: 170px;
+}
+.lid span {
+  left: 172px;
+}
+.promo {
+  font-size: 30px;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  position: relative;
+  height: 0;
+  top: 10px;
+  transition: all ease-out 0.7s;
+}
+.promo p {
+  font-size: 18px;
+  margin: 0;
+}
+.promo h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+/* hover effects */
+.present:hover .lid {
+  top: -100px;
+  transform: rotateZ(10deg);
+  left: 10px;
+}
+.present:hover .promo {
+  top: -80px;
+}
+
+
+
+/* =========================================
+   6. RESPONSYWNOŚĆ
+   ========================================= */
+/* =========================================
+   RESPONSYWNOŚĆ PREZENTU
+   ========================================= */
+
+@media (max-width: 600px) {
+  .present {
+    width: 280px;
+  }
+
+  .box {
+    width: 270px;
+    height: 170px;
+  }
+
+  .lid {
+    width: 270px;
+    height: 55px;
+  }
+
+  /* pionowa wstążka */
+  .box span:first-child {
+    height: 45px;
+    top: 60px;
+  }
+
+  /* pionowa wstążka + wstążka na pokrywie */
+  .box span:last-child,
+  .lid span {
+    width: 45px;
+    left: 112px;
+  }
+
+  .promo {
+    font-size: 22px;
+  }
+
+  .promo p {
+    font-size: 12px;
+  }
+  
+  .promo h2 {
+    font-size: 16px;
+  }
+  
+
+
+  /* hover – mniejszy skok */
+  .present:hover .lid {
+    top: -70px;
+    left: 6px;
+    transform: rotateZ(8deg);
+  }
+
+  .present:hover .promo {
+    top: -60px;
+  }
+}
+
+/* =========================================
+   MAŁE TELEFONY (bardzo mały ekran)
+   ========================================= */
+@media (max-width: 480px) {
+  .present {
+    width: 230px;
+  }
+
+  .box {
+    width: 220px;
+    height: 145px;
+  }
+
+  .lid {
+    width: 220px;
+    height: 45px;
+  }
+
+  .box span:first-child {
+    height: 35px;
+    top: 50px;
+  }
+
+  .box span:last-child,
+  .lid span {
+    width: 35px;
+    left: 92px;
+  }
+
+  .promo {
+    font-size: 20px;
+    top: 5px;
+  }
+
+  .promo p {
+    font-size: 13px;
+  }
+
+  .present:hover .lid {
+    top: -55px;
+    left: 5px;
+    transform: rotateZ(7deg);
+  }
+
+  .present:hover .promo {
+    top: -50px;
+  }
+}
+
+/* Telefony */
+@media (max-width: 600px) {
+   .circle-img,
+  .rect-img {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .circle-img,
+  .rect-img {
+    width: 48%;
+  }
+  
+  .title { font-size: 2.3rem; }
+
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 5px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  /* Header na telefonie */
+  .sticky-header ul {
+    gap: 8px;
+  }
+
+  .sticky-header a {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+
+  .slideshow-container {
+    margin: 20px 0;
+    width: 100%;
+  }
+
+  .mySlides {
+    padding: 10px;
+  }
+
+  .mySlides img {
+    max-height: 230px;
+  }
+
+  .prev, .next {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    margin-top: -16px;
+    background: rgba(123, 44, 191, 0.4);
+  }
+}
+
+
+/* balony nowe */
+/* Konfetti Canvas */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Pod tekstem */
+    pointer-events: none;
+}
+
+/* Kontener na balony */
+.balloon-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Wygląd pojedynczego balonu */
+.balloon {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    box-shadow: inset -10px -10px 0 rgba(0,0,0,0.07);
+    bottom: -150px; /* Start pod ekranem */
+    animation: float 10s infinite ease-in; /* SKRÓCONY CZAS ANIMACJI */
+}
+
+/* Sznurek balona */
+.balloon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: rgba(255,255,255,0.4);
+    top: 100px;
+    left: 40px;
+}
+
+/* Kolory, pozycje i szybsze czasy dla 10 balonów */
+.balloon:nth-child(1) { background: #ff66c4; left: 5%; animation-duration: 8s; }
+.balloon:nth-child(2) { background: #7b61ff; left: 15%; animation-duration: 12s; animation-delay: 1s; }
+.balloon:nth-child(3) { background: #ffd166; left: 25%; animation-duration: 10s; animation-delay: 3s; }
+.balloon:nth-child(4) { background: #4cc9f0; left: 35%; animation-duration: 14s; animation-delay: 0.5s; }
+.balloon:nth-child(5) { background: #80ed99; left: 45%; animation-duration: 9s; animation-delay: 4s; }
+.balloon:nth-child(6) { background: #ff8fab; left: 55%; animation-duration: 11s; animation-delay: 2s; }
+.balloon:nth-child(7) { background: #9d4edd; left: 65%; animation-duration: 13s; animation-delay: 5s; }
+.balloon:nth-child(8) { background: #f9c74f; left: 75%; animation-duration: 10s; animation-delay: 1.5s; }
+.balloon:nth-child(9) { background: #5dd6ff; left: 85%; animation-duration: 12s; animation-delay: 3s; }
+.balloon:nth-child(10) { background: #90f1ef; left: 95%; animation-duration: 9s; animation-delay: 6s; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+}
+
+/* Zapewnienie, że tekst jest nad efektami */
+.hero .title, .hero .subtitle, .hero .btn {
+    z-index: 10;
+    position: relative;
+}
+/* kontener */
+.container{
+  width: min(800px, 92%);
+  margin: 40px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 4vw, 40px);
+  flex-wrap: wrap;
+}
+
+/* tekst */
+.letter{
+  flex: 1 1 320px;
+  min-width: 240px;
+  display: inline-block;
+}
+
+.container h2{
+  font-family: 'Sacramento', cursive;
+  color: #FE7696;
+  line-height: 1.05;
+}
+
+/* róża */
+.rose{
+  flex: 0 0 clamp(150px, 22vw, 200px);
+  width: clamp(150px, 22vw, 200px);
+  height: clamp(150px, 22vw, 200px);
+  position: relative;
+  display: inline-block;
+  animation: yidon 5s infinite;
+  transform: translateY(40%);
+  overflow: visible;
+}
+
+/* wewnętrzny kontener kwiatka */
+.flower{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* płatki */
+.petal{
+  width: 25%;
+  height: 25%;
+  background: #fe7696;
+  border-radius: 0px 50%;
+  position: absolute;
+  box-shadow: 0 0 10px #D1123F;
+  z-index: 2;
+  transform-origin: bottom right;
+  animation: zhankai2 10s infinite;
+}
+
+.petal:nth-child(2){
+  transform-origin: right bottom;
+  transform: rotate(90deg);
+  left: -5%;
+  background: #fe7696;
+  animation: zhankai1 10s infinite;
+}
+
+.petal:nth-child(3){
+  width: 20%;
+  height: 20%;
+  left: 5%;
+  top: -10%;
+  z-index: 1;
+  background: #f03a64;
+  transform-origin: bottom right;
+  animation: zhankai2 10s infinite;
+}
+
+.petal:nth-child(4){
+  transform: rotate(90deg);
+  width: 20%;
+  height: 20%;
+  left: 0%;
+  top: -10%;
+  z-index: 1;
+  background: #f03a64;
+  transform-origin: bottom right;
+  animation: zhankai1 10s infinite;
+}
+
+.petal:nth-child(5){
+  width: 25%;
+  height: 25%;
+  border-radius: 20px;
+  left: 10%;
+  top: -15%;
+  z-index: 0;
+  background: #d1123f;
+}
+
+/* łodyga */
+.leaf{
+  position: absolute;
+  top: 60%;
+  left: -58%;
+  width: 130%;
+  height: 42%;
+}
+
+.stem{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: clamp(4px, 0.55vw, 8px) solid #8ac78a;
+  border-color: #77a377 transparent transparent transparent;
+  border-radius: 50% 50%;
+  transform: rotate(100deg);
+}
+
+.leafs{
+  width: 22%;
+  height: 35%;
+  border-radius: 0px 50%;
+  background: #77a377;
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: 49;
+}
+
+.leafs:nth-child(2){
+  width: 18%;
+  height: 18%;
+  top: 36%;
+  left: 63%;
+  transform: rotate(120deg);
+}
+
+/* animacje bez zmian */
+@keyframes yidon{
+  50%{
+    transform: translateY(35%);
+  }
+  100%{
+    transform: translateY(40%);
+  }
+}
+
+@keyframes zhankai1{
+  50%{
+    transform: rotate(110deg);
+  }
+  100%{
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes zhankai2{
+  50%{
+    transform: rotate(-20deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
